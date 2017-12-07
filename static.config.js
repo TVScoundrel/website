@@ -1,13 +1,17 @@
-import axios from 'axios'
 import React, { Component } from 'react'
 import { ServerStyleSheet } from 'styled-components'
+import client from './src/services/contentfulClient'
+import blogPost from './src/models/blogPost'
 
 export default {
   getSiteProps: () => ({
     title: 'React Static',
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    const { items } = await client.getEntries({ content_type: '2wKn6yEnZewu2SCCkus4as' })
+      .catch(err => {
+        console.log(err)
+      })
     return [
       {
         path: '/',
@@ -21,16 +25,17 @@ export default {
         path: '/blog',
         component: 'src/containers/Blog',
         getProps: () => ({
-          posts,
+          posts: items.map(blogPost),
         }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
+        children: items.map(blogPost).map(post => ({
+          path: `/post/${post.slug}`,
           component: 'src/containers/Post',
           getProps: () => ({
             post,
           }),
         })),
       },
+
       {
         is404: true,
         component: 'src/containers/404',
