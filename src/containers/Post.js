@@ -1,9 +1,6 @@
 import React from 'react'
 import { getRouteProps, Link } from 'react-static'
 
-import Markdown from 'react-markdown'
-import Prism from 'prismjs'
-
 const codeBlock = props => {
   const html = Prism.highlight(props.literal, Prism.languages[props.language])
   const cls = `language-${props.language}`
@@ -23,6 +20,6 @@ export default getRouteProps(({ post }) => (
     <Link to="/blog/">{'<'} Back</Link>
     <br />
     <h3>{post.title}</h3>
-    <Markdown source={post.body} renderers={{ CodeBlock: codeBlock }} />
+    <div dangerouslySetInnerHTML={{ __html: post.parsed }} />
   </div>
 ))

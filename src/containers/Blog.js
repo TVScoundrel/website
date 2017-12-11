@@ -3,7 +3,6 @@ import React from 'react'
 import { getRouteProps, Link } from 'react-static'
 
 export default getRouteProps(({ posts }) => {
-  console.log(posts)
   return (
     <div>
       <h1>It's blog time.</h1>

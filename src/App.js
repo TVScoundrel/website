@@ -4,9 +4,6 @@ import styled, { injectGlobal } from 'styled-components'
 //
 import Routes from 'react-static-routes'
 
-import 'prismjs/components/prism-jsx'
-import 'prismjs/themes/prism-okaidia.css'
-
 import withRoot from './components/withRoot'
 
 injectGlobal`

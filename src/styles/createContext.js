@@ -6,6 +6,11 @@ import { createMuiTheme } from 'material-ui/styles'
 import { purple, green } from 'material-ui/colors'
 import createGenerateClassName from 'material-ui/styles/createGenerateClassName'
 
+// eslint-disable-next-line
+import Prism from 'prismjs'
+import 'prismjs/components/prism-jsx'
+import 'prismjs/themes/prism-okaidia.css'
+
 const theme = createMuiTheme({
   palette: {
     primary: purple,
@@ -23,9 +28,7 @@ export default function createContext () {
   return {
     jss,
     theme,
-    // This is needed in order to deduplicate the injection of CSS in the page.
     sheetsManager,
-    // This is needed in order to inject the critical CSS.
     sheetsRegistry: new SheetsRegistry(),
   }
 }
