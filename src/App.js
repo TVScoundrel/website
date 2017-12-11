@@ -3,6 +3,7 @@ import { Router, Link } from 'react-static'
 import styled, { injectGlobal } from 'styled-components'
 //
 import Routes from 'react-static-routes'
+import withRoot from './components/withRoot'
 
 injectGlobal`
   body {
@@ -42,7 +43,7 @@ const AppStyles = styled.div`
   }
 `
 
-export default () => (
+const App = () => (
   <Router>
     <AppStyles>
       <nav>
@@ -56,3 +57,5 @@ export default () => (
     </AppStyles>
   </Router>
 )
+
+export default withRoot(App)
