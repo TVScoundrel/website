@@ -1,29 +1,16 @@
 {
-  "name": "react-static-starter",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "start": "react-static start",
-    "build": "react-static build",
-    "serve": "serve dist -p 3000"
-  },
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "axios": "^0.16.2",
-    "contentful": "^5.0.5",
-    "jss": "^9.3.3",
-    "jss-preset-default": "^4.0.1",
-    "markdown-it": "^8.4.0",
-    "markdown-it-prism": "^1.1.1",
-    "material-ui": "^1.0.0-beta.23",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-router": "^4.2.0",
-    "react-static": "^4.4.0",
-    "styled-components": "2.2.0"
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-scripts": "1.1.4"
   },
-  "devDependencies": {
-    "eslint-config-react-tools": "1.x.x",
-    "serve": "^6.1.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
