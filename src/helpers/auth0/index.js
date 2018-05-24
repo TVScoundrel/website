@@ -1,11 +1,17 @@
 import Auth0Lock from 'auth0-lock';
 import history from './history';
-import { Auth0Config } from '../../settings';
+import { Auth0Config } from '../../config.js';
 import { notification } from '../../components';
 
 class Auth0Helper {
   isValid = Auth0Config.clientID && Auth0Config.domain;
-
+  lock = this.isValid
+    ? new Auth0Lock(
+        Auth0Config.clientID,
+        Auth0Config.domain,
+        Auth0Config.options
+      )
+    : null;
   constructor() {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
@@ -13,16 +19,6 @@ class Auth0Helper {
     this.isAuthenticated = this.isAuthenticated.bind(this);
   }
   login(handleLogin) {
-    this.lock = this.isValid
-      ? new Auth0Lock(
-          Auth0Config.clientID,
-          Auth0Config.domain,
-          Auth0Config.options
-        )
-      : null;
-    if (!this.lock) {
-      return;
-    }
     this.lock.on('authenticated', authResult => {
       if (authResult && authResult.accessToken) {
         if (window) {

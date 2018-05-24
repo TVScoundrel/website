@@ -1,14 +1,10 @@
 import firebase from 'firebase';
-import ReduxSagaFirebase from 'redux-saga-firebase';
-import 'firebase/firestore';
-import { firebaseConfig } from '../../settings';
+import { firebaseConfig } from '../../config.js';
 
-const valid =
-  firebaseConfig && firebaseConfig.apiKey && firebaseConfig.projectId;
+const valid = firebaseConfig  && firebaseConfig.apiKey && firebaseConfig.projectId;
 
-const firebaseApp = valid && firebase.initializeApp(firebaseConfig);
-const firebaseAuth = valid && firebase.auth;
-
+firebase.initializeApp(firebaseConfig);
+const firebaseAuth = firebase.auth;
 class FirebaseHelper {
   isValid = valid;
   EMAIL = 'email';
@@ -20,22 +16,8 @@ class FirebaseHelper {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.database = this.isValid && firebase.firestore();
-    if (this.database) {
-      const settings = {};
-      this.database.settings(settings);
-    }
-    this.rsf =
-      this.isValid && new ReduxSagaFirebase(firebaseApp, firebase.firestore());
-    this.rsfFirestore = this.isValid && this.rsf.firestore;
   }
-  createBatch = () => {
-    return this.database.batch();
-  };
   login(provider, info) {
-    if (!this.isValid) {
-      return;
-    }
     switch (provider) {
       case this.EMAIL:
         return firebaseAuth().signInWithEmailAndPassword(
@@ -64,12 +46,6 @@ class FirebaseHelper {
   }
   resetPassword(email) {
     return firebaseAuth().sendPasswordResetEmail(email);
-  }
-  createNewRef() {
-    return firebase
-      .database()
-      .ref()
-      .push().key;
   }
 }
 

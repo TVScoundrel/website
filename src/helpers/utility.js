@@ -20,7 +20,7 @@ export function timeDifference(givenTime) {
   const numberEnding = number => {
     return number > 1 ? 's' : '';
   };
-  const number = num => (num > 9 ? '' + num : '0' + num);
+  const number = num => num > 9 ? '' + num : '0' + num;
   const getTime = () => {
     let temp = Math.floor(milliseconds / 1000);
     const years = Math.floor(temp / 31536000);
@@ -47,7 +47,7 @@ export function timeDifference(givenTime) {
           'Sep',
           'Oct',
           'Nov',
-          'Dec'
+          'Dec',
         ];
         const month = months[givenTime.getUTCMonth()];
         const day = number(givenTime.getUTCDate());
@@ -65,17 +65,4 @@ export function timeDifference(givenTime) {
     return 'a few seconds ago';
   };
   return getTime();
-}
-
-export function stringToInt(value, defValue = 0) {
-  if (!value) {
-    return 0;
-  } else if (!isNaN(value)) {
-    return parseInt(value, 10);
-  }
-  return defValue;
-}
-export function stringToPosetiveInt(value, defValue = 0) {
-  const val = stringToInt(value, defValue);
-  return val > -1 ? val : defValue;
 }

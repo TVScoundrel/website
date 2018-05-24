@@ -25,13 +25,9 @@ const DashAppHolder = styled.div`
     }
   }
 
-  .ant-row:not(.ant-form-item) {
+  .ant-row {
     ${'' /* margin-left: -8px;
     margin-right: -8px; */};
-    &:before,
-    &:after {
-      display: none;
-    }
   }
 
   .ant-row > div {

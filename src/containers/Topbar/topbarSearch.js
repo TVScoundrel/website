@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Searchbar from '../../components/topbar/searchBox';
+import { InputSearch } from '../uielements/input';
 import TopbarSearchModal from './topbarSearchModal.style';
+
+class Searchbar extends Component {
+  componentDidMount() {
+    setTimeout(() => {
+      try {
+        document.getElementById('InputTopbarSearch').focus();
+      } catch (e) {}
+    }, 200);
+  }
+  render() {
+    return (
+      <InputSearch
+        id="InputTopbarSearch"
+        size="large"
+        placeholder="Enter search text"
+        onBlur={this.props.onBlur}
+      />
+    );
+  }
+}
 
 class TopbarSearch extends Component {
   state = {

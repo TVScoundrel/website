@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import IntlMessages from '../../components/utility/intlMessages';
-import Scrollbar from '../../components/utility/customScrollBar';
 import Popover from '../../components/uielements/popover';
 import SingleCart from '../../components/cart/singleCartModal';
 import ecommerceAction from '../../redux/ecommerce/actions';
@@ -11,7 +10,7 @@ import TopbarDropdownWrapper from './topbarDropdown.style';
 const {
   initData,
   changeViewTopbarCart,
-  changeProductQuantity,
+  changeProductQuantity
 } = ecommerceAction;
 let totalPrice;
 class TopbarAddtoCart extends Component {
@@ -67,7 +66,7 @@ class TopbarAddtoCart extends Component {
       } else {
         newProductQuantity.push({
           objectID,
-          quantity,
+          quantity
         });
       }
     });
@@ -89,7 +88,7 @@ class TopbarAddtoCart extends Component {
       url,
       productQuantity,
       viewTopbarCart,
-      customizedTheme,
+      customizedTheme
     } = this.props;
     const content = (
       <TopbarDropdownWrapper className="topbarAddtoCart">
@@ -99,7 +98,7 @@ class TopbarAddtoCart extends Component {
           </h3>
         </div>
         <div className="isoDropdownBody isoCartItemsWrapper">
-          <Scrollbar style={{ height: 300 }}>{this.renderProducts()}</Scrollbar>
+          {this.renderProducts()}
         </div>
         <div className="isoDropdownFooterLinks">
           <Link to={`${url}/cart`} onClick={this.hide}>
@@ -139,11 +138,11 @@ class TopbarAddtoCart extends Component {
 function mapStateToProps(state) {
   return {
     ...state.Ecommerce.toJS(),
-    customizedTheme: state.ThemeSwitcher.toJS().topbarTheme,
+    customizedTheme: state.ThemeSwitcher.toJS().topbarTheme
   };
 }
 export default connect(mapStateToProps, {
   initData,
   changeViewTopbarCart,
-  changeProductQuantity,
+  changeProductQuantity
 })(TopbarAddtoCart);

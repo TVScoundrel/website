@@ -1,6 +1,5 @@
 {
   "sidebar.email": "Email",
-  "sidebar.chat": "Chat",
   "sidebar.ecommerce": "Ecommerce",
   "sidebar.shop": "Shop",
   "sidebar.cart": "Cart",
@@ -200,7 +199,7 @@
   "forms.formsWithValidation.header": "Customized Validation Form",
   "forms.formsWithValidation.failLabel": "Fail",
   "forms.formsWithValidation.failHelp":
-    "Should be combination of numbers & alphabets",
+    "Should be combination of numbers &amp; alphabets",
   "forms.formsWithValidation.warningLabel": "Warning",
   "forms.formsWithValidation.ValidatingLabel": "Validating",
   "forms.formsWithValidation.ValidatingHelp":
@@ -209,7 +208,7 @@
   "forms.formsWithValidation.WarninghasFeedbackLabel": "Warning",
   "forms.formsWithValidation.FailhasFeedbackLabel": "Fail",
   "forms.formsWithValidation.FailhasFeedbackHelp":
-    "Should be combination of numbers & alphabets",
+    "Should be combination of numbers &amp; alphabets",
   "forms.progressBar.header": "Progress Bar",
   "forms.progressBar.standardTitle": "Progress bar",
   "forms.progressBar.standardSubTitle": "A standard progress bar.",

@@ -10,7 +10,7 @@ export default Loader => (
         cy="25"
         r="20"
         fill="none"
-        strokeWidth="3.6"
+        stroke-width="3.6"
       />
     </svg>
   </LoaderComponent>

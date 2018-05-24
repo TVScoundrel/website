@@ -1,18 +1,14 @@
-import styled from 'styled-components';
-import { palette } from 'styled-theme';
-import { transition, borderRadius } from '../../settings/style-util';
-import WithDirection from '../../settings/withDirection';
+import styled from "styled-components";
+import { palette } from "styled-theme";
+import { transition, borderRadius } from "../../settings/style-util";
+import WithDirection from "../../settings/withDirection";
 
 const SidebarWrapper = styled.div`
   .isomorphicSidebar {
     z-index: 1000;
-    background: ${palette('secondary', 0)};
+    background: ${palette("secondary", 0)};
     width: 280px;
     flex: 0 0 280px;
-
-    .scrollarea {
-      height: calc(100vh - 70px);
-    }
 
     @media only screen and (max-width: 767px) {
       width: 240px !important;
@@ -44,7 +40,7 @@ const SidebarWrapper = styled.div`
           line-height: 70px;
           letter-spacing: 3px;
           text-transform: uppercase;
-          color: ${palette('grayscale', 6)};
+          color: ${palette("grayscale", 6)};
           display: block;
           text-decoration: none;
         }
@@ -82,27 +78,26 @@ const SidebarWrapper = styled.div`
         -ms-flex-align: center;
         align-items: center;
         padding: 0 24px;
-        margin: 0;
       }
 
       .isoMenuHolder {
         display: flex;
         align-items: center;
-
-        i {
-          font-size: 19px;
-          color: inherit;
-          margin: ${props =>
-            props['data-rtl'] === 'rtl' ? '0 0 0 30px' : '0 30px 0 0'};
-          width: 18px;
-          ${transition()};
-        }
       }
 
       .anticon {
         font-size: 18px;
         margin-right: 30px;
         color: inherit;
+        ${transition()};
+      }
+
+      i {
+        font-size: 19px;
+        color: inherit;
+        margin: ${props =>
+          props["data-rtl"] === "rtl" ? "0 0 0 30px" : "0 30px 0 0"};
+        width: 18px;
         ${transition()};
       }
 
@@ -139,7 +134,7 @@ const SidebarWrapper = styled.div`
     }
 
     .ant-menu-dark .ant-menu-inline.ant-menu-sub {
-      background: ${palette('secondary', 5)};
+      background: ${palette("secondary", 5)};
     }
 
     .ant-menu-submenu-inline,
@@ -155,41 +150,19 @@ const SidebarWrapper = styled.div`
           align-items: center;
         }
 
-        .ant-menu-submenu-arrow {
-          left: ${props => (props['data-rtl'] === 'rtl' ? '25px' : 'auto')};
-          right: ${props => (props['data-rtl'] === 'rtl' ? 'auto' : '25px')};
-
-          &:before,
-          &:after {
-            width: 8px;
-            ${transition()};
-          }
-
-          &:before {
-            transform: rotate(-45deg) translateX(3px);
-          }
-
-          &:after {
-            transform: rotate(45deg) translateX(-3px);
-          }
-
-          ${'' /* &:after {
-            content: '\f123';
-            font-family: 'Ionicons' !important;
-            font-size: 16px;
-            color: inherit;
-            left: ${props => (props['data-rtl'] === 'rtl' ? '16px' : 'auto')};
-            right: ${props => (props['data-rtl'] === 'rtl' ? 'auto' : '16px')};
-            ${transition()};
-          } */};
+        &:after {
+          content: "\f123";
+          font-family: "Ionicons" !important;
+          font-size: 16px;
+          color: inherit;
+          left: ${props => (props["data-rtl"] === "rtl" ? "16px" : "auto")};
+          right: ${props => (props["data-rtl"] === "rtl" ? "auto" : "16px")};
+          ${transition()};
         }
 
         &:hover {
-          .ant-menu-submenu-arrow {
-            &:before,
-            &:after {
-              color: #ffffff;
-            }
+          &:after {
+            color: #ffffff;
           }
         }
       }
@@ -198,19 +171,16 @@ const SidebarWrapper = styled.div`
       .ant-menu-submenu-vertical {
         > li:not(.ant-menu-item-group) {
           padding-left: ${props =>
-            props['data-rtl'] === 'rtl' ? '0px !important' : '74px !important'};
+            props["data-rtl"] === "rtl" ? "0px !important" : "74px !important"};
           padding-right: ${props =>
-            props['data-rtl'] === 'rtl' ? '74px !important' : '0px !important'};
+            props["data-rtl"] === "rtl" ? "74px !important" : "0px !important"};
           font-size: 13px;
           font-weight: 400;
-          margin: 0;
           color: inherit;
           ${transition()};
 
           &:hover {
-            a {
-              color: #ffffff !important;
-            }
+            color: #ffffff;
           }
         }
 
@@ -229,7 +199,6 @@ const SidebarWrapper = styled.div`
       }
 
       .ant-menu-sub {
-        box-shadow: none;
         background-color: transparent !important;
       }
     }

@@ -59,7 +59,6 @@ const AppHolder = styled.div`
 
     @media only screen and (min-width: 768px) and (max-width: 1220px) {
       width: calc(100% - 80px);
-      width: 100%;
     }
   }
 

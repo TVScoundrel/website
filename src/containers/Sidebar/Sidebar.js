@@ -10,9 +10,10 @@ import IntlMessages from '../../components/utility/intlMessages';
 import SidebarWrapper from './sidebar.style';
 import appActions from '../../redux/app/actions';
 import Logo from '../../components/utility/logo';
+import themes from '../../settings/themes';
+import { themeConfig } from '../../settings';
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 const { Sider } = Layout;
 
 const {
@@ -111,7 +112,7 @@ class Sidebar extends Component {
     );
   };
   render() {
-    const { app, toggleOpenDrawer, customizedTheme, height } = this.props;
+    const { app, toggleOpenDrawer, height } = this.props;
     const collapsed = clone(app.collapsed) && !clone(app.openDrawer);
     const { openDrawer } = app;
     const mode = collapsed === true ? 'vertical' : 'inline';
@@ -127,6 +128,7 @@ class Sidebar extends Component {
       }
       return;
     };
+    const customizedTheme = themes[themeConfig.theme];
     const styling = {
       backgroundColor: customizedTheme.backgroundColor
     };
@@ -163,41 +165,6 @@ class Sidebar extends Component {
               {options.map(singleOption =>
                 this.getMenuItem({ submenuStyle, submenuColor, singleOption })
               )}
-              {/* Demo Menu */}
-              <SubMenu
-                key="sub1"
-                title={
-                  <span className="isoMenuHolder" style={submenuColor}>
-                    <i className="ion-android-options" />
-                    <span className="nav-text">
-                      <IntlMessages id="sidebar.menuLevels" />
-                    </span>
-                  </span>
-                }
-              >
-                <MenuItemGroup
-                  key="g1"
-                  title={<IntlMessages id="sidebar.item1" />}
-                >
-                  <Menu.Item style={submenuStyle} key="1">
-                    <IntlMessages id="sidebar.option1" />
-                  </Menu.Item>
-                  <Menu.Item style={submenuStyle} key="2">
-                    <IntlMessages id="sidebar.option2" />
-                  </Menu.Item>
-                </MenuItemGroup>
-                <MenuItemGroup
-                  key="g2"
-                  title={<IntlMessages id="sidebar.item2" />}
-                >
-                  <Menu.Item style={submenuStyle} key="3">
-                    <IntlMessages id="sidebar.option3" />
-                  </Menu.Item>
-                  <Menu.Item style={submenuStyle} key="4">
-                    <IntlMessages id="sidebar.option4" />
-                  </Menu.Item>
-                </MenuItemGroup>
-              </SubMenu>
             </Menu>
           </Scrollbars>
         </Sider>
@@ -209,7 +176,6 @@ class Sidebar extends Component {
 export default connect(
   state => ({
     app: state.App.toJS(),
-    customizedTheme: state.ThemeSwitcher.toJS().sidebarTheme,
     height: state.App.toJS().height
   }),
   { toggleOpenDrawer, changeOpenKeys, changeCurrent, toggleCollapsed }
